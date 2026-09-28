@@ -4,7 +4,7 @@ const links = [
   { href: '#proyecto', label: 'El proyecto' },
   { href: '#funciona', label: 'Cómo funciona' },
   { href: '#signal', label: 'Signal for Help' },
-  { href: '#visualizacion', label: 'Visualización' },
+  { href: '#visualizacion', label: 'Demostración' },
   { href: '#universidad', label: 'UNAE' },
 ]
 

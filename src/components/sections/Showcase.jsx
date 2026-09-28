@@ -18,9 +18,28 @@ export default function Showcase() {
       <div className="container">
         <SectionHeading
           number="05 / VISUALIZACIÓN"
-          title="Así se entiende el flujo."
-          description="Tres estados ilustrativos muestran cómo el sistema observa, interpreta y responde."
+          title="De la caída al aviso."
+          description="Mira una simulación de 14 segundos: una caída en casa, su detección y la alerta que recibe su hija."
         />
+        <figure className="showcase__film">
+          <div className="showcase__film-top">
+            <span>Demostración animada</span>
+            <span>00:14</span>
+          </div>
+          <video
+            className="showcase__video"
+            controls
+            playsInline
+            preload="none"
+            poster="/img/falldetect-demo-poster.png"
+            aria-label="Simulación de FallDetect: observación, detección de caída y envío de una alerta"
+          >
+            <source src="/video/falldetect.mp4" type="video/mp4" />
+            Tu navegador no puede reproducir este video. <a href="/video/falldetect.mp4">Abrir la demostración</a>.
+          </video>
+          <figcaption>Secuencia conceptual; no es una grabación del sistema en funcionamiento.</figcaption>
+        </figure>
+        <h3 className="showcase__states-title">El flujo en tres momentos</h3>
         <div className="showcase__grid">
           {showcaseStates.map((item) => (
             <article className="showcase-card" key={item.code}>
@@ -29,7 +48,7 @@ export default function Showcase() {
             </article>
           ))}
         </div>
-        <p className="showcase__note">Visualizaciones conceptuales. Las capturas reales del programa pueden incorporarse aquí cuando estén disponibles.</p>
+        <p className="showcase__note">Las imágenes también son ilustrativas. Las capturas reales del programa pueden incorporarse aquí cuando estén disponibles.</p>
       </div>
     </section>
   )
