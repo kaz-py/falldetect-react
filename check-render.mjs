@@ -1,0 +1,16 @@
+import { writeFile } from 'node:fs/promises'
+const pages=await fetch('http://127.0.0.1:9222/json').then(r=>r.json())
+const page=pages.find(p=>p.type==='page')
+const socket=new WebSocket(page.webSocketDebuggerUrl)
+await new Promise(r=>socket.addEventListener('open',r,{once:true}))
+let id=0;const pending=new Map()
+socket.addEventListener('message',({data})=>{const m=JSON.parse(data);if(pending.has(m.id)){pending.get(m.id)(m.result);pending.delete(m.id)}})
+const send=(method,params={})=>new Promise(r=>{const n=++id;pending.set(n,r);socket.send(JSON.stringify({id:n,method,params}))})
+await send('Page.enable')
+await send('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false})
+await send('Page.navigate',{url:'http://127.0.0.1:5173/'+(process.argv[2]||'rig-check.html')})
+await new Promise(r=>setTimeout(r,2500))
+if(process.argv[4]){console.log(await send('Runtime.evaluate',{expression:process.argv[4],awaitPromise:true,returnByValue:true}));await new Promise(r=>setTimeout(r,800))}
+const {data}=await send('Page.captureScreenshot',{format:'png'})
+await writeFile('C:/Users/pc1/AppData/Local/Temp/'+(process.argv[3]||'rig-hand')+'.png',Buffer.from(data,'base64'))
+socket.close()
