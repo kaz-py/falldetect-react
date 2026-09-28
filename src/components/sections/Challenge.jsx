@@ -1,4 +1,5 @@
 import SectionHeading from '../ui/SectionHeading.jsx'
+import Reveal from '../ui/Reveal.jsx'
 
 export default function Challenge() {
   return (
@@ -9,7 +10,7 @@ export default function Challenge() {
           title="El tiempo después de una caída importa."
           description="La atención temprana puede marcar una diferencia cuando una persona vive sola o pasa muchas horas sin compañía."
         />
-        <div className="challenge__layout">
+        <Reveal className="challenge__layout">
           <div className="challenge__stat">
             <span className="challenge__stat-value">28–35<span>%</span></span>
             <p>de las personas mayores de 65 años sufren una caída cada año, según el informe mundial de la OMS.</p>
@@ -19,7 +20,7 @@ export default function Challenge() {
             <p>El riesgo no termina con la caída. Si nadie está cerca, pueden pasar horas antes de que llegue ayuda. FallDetect nace para observar ese momento crítico y activar un aviso sin depender de que la persona pueda pedirlo.</p>
             <div className="challenge__note"><span className="challenge__note-icon">+</span><p>El proyecto también incorpora una segunda vía de auxilio mediante un gesto de la mano frente a la cámara.</p></div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   )
