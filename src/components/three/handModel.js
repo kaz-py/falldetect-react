@@ -45,8 +45,8 @@ export function createHandsModel() {
       // each joint direction in model space instead of assuming a local axis.
       for (const [name, direction] of [
         ['thumb_meta', new THREE.Vector3(0.65, 0.68, 0.33)],
-        ['thumb_prox', new THREE.Vector3(0.98, 0.1, 0.15)],
-        ['thumb_dist', new THREE.Vector3(0.99, -0.08, 0.1)],
+        ['thumb_prox', new THREE.Vector3(0.97, -0.13, 0.15)],
+        ['thumb_dist', new THREE.Vector3(0.92, -0.38, 0.1)],
       ]) {
         const bone = hand.getObjectByName(name)
         const world = bone.getWorldQuaternion(new THREE.Quaternion())
@@ -61,7 +61,10 @@ export function createHandsModel() {
       mixer.uncacheRoot(hand)
 
       joints = bones.map((bone, index) => {
-        const tucked = thumb[index].clone()
+        // Keep the thumb's metacarpal close to its resting angle so the
+        // connection to the palm does not fold into a sharp lump.
+        const foldAmount = bone.name === 'thumb_meta' || bone.name === 'thumb_prox' ? 0.7 : 1
+        const tucked = open[index].clone().slerp(thumb[index], foldAmount)
         bone.quaternion.copy(open[index])
         return { bone, open: open[index], closed: closed[index], tucked }
       })
