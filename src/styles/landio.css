@@ -239,7 +239,7 @@ body { background: var(--paper); color: var(--text); }
 .preview--analysis .preview__bounding, .preview--response .preview__bounding { border-color: #ffbd88; }
 @keyframes detection-pulse { 50% { box-shadow: 0 0 28px rgba(172,225,255,.48); } }
 .about { position: relative; overflow: hidden; background: radial-gradient(ellipse at 25% 48%, rgba(67, 116, 164, .18), transparent 42%), #070a10; border-top: 1px solid var(--line); }
-.about__mark { border: 1px solid rgba(182, 224, 251, .32); color: #e0f0fa; box-shadow: 0 0 70px rgba(90, 157, 207, .14), inset 0 0 55px rgba(90, 157, 207, .08); }
+.about__mark img { filter: drop-shadow(0 0 24px rgba(90, 157, 207, .2)); }
 .about__label { margin: 0; }
 .about h2 { margin: 24px 0; }
 .about p { color: #a5b3c2; }

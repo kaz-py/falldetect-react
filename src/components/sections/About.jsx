@@ -4,7 +4,9 @@ export default function About() {
   return (
     <section id="universidad" className="about">
       <div className="container about__inner">
-        <Reveal className="about__mark" aria-hidden="true">UNAE<span>↗</span></Reveal>
+        <Reveal as="a" className="about__mark" href="https://www.unae.edu.py/tv/" target="_blank" rel="noreferrer" aria-label="Visitar UNAE TV (se abre en una pestaña nueva)">
+          <img src="/img/unae-logo-blue.svg" alt="Logo de la Universidad Autónoma de Encarnación" width="300" height="300" />
+        </Reveal>
         <Reveal className="about__content" delay={0.12}>
           <span className="about__label">06 / ORIGEN DEL PROYECTO</span>
           <h2>Construido para cuidar.<br />Aprendiendo a crear futuro.</h2>

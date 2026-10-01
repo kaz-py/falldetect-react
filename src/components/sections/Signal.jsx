@@ -43,7 +43,7 @@ export default function Signal() {
             description="Signal for Help suma una forma de pedir auxilio cuando no hay una caída visible."
             light
           />
-          <p className="signal__body">Frente a la cámara, la persona abre y cierra los cuatro dedos —sin contar el pulgar— cinco veces seguidas. El programa sigue la mano y cuenta los ciclos. Al completar el quinto, envía una alerta por Telegram al contacto designado.</p>
+          <p className="signal__body">Frente a la cámara, la persona abre y cierra los cuatro dedos —sin contar el pulgar— cinco veces seguidas. El programa sigue la mano y cuenta los ciclos. Al completar el quinto, envía una alerta por Telegram al contacto designado. También se puede configurar una llamada telefónica con costo adicional.</p>
           <div className="signal__sequence" aria-label="Secuencia del gesto">
             <div><span>1</span><strong>Mostrar la mano</strong><small>Frente a la cámara</small></div>
             <div><span>2</span><strong>Colocar el pulgar</strong><small>Sobre la palma</small></div>

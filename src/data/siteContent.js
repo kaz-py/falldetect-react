@@ -20,7 +20,7 @@ export const processSteps = [
   {
     number: '04',
     title: 'Aviso',
-    description: 'Cuando reconoce el evento, envía una notificación por Telegram al contacto designado.',
+    description: 'Cuando reconoce el evento, envía una notificación por Telegram al contacto designado. También se puede configurar una llamada telefónica con costo adicional.',
     detail: 'Alerta automática',
   },
 ]

@@ -153,7 +153,7 @@ const cards = [
   },
   {
     title: 'Aviso por Telegram',
-    description: 'Al reconocer el evento, FallDetect notifica al contacto de confianza designado.',
+    description: 'Al reconocer el evento, FallDetect notifica al contacto de confianza por Telegram. También se puede configurar una llamada telefónica con costo adicional.',
     visual: <TelegramVisual />,
   },
   {

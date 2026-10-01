@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" role="img" aria-labelledby="title">
+  <title id="title">Logo de la Universidad Autónoma de Encarnación</title>
+  <path d="M39 61c35-2 73-35 110-35s75 33 112 35c13 14 19 34 19 58 0 67-54 154-130 154S19 186 19 119c0-24 7-44 20-58Z" fill="none" stroke="#a8e8ff" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#a2dcf3">
+    <rect x="60" y="94" width="27" height="58" rx="13.5"/>
+    <rect x="97" y="79" width="27" height="73" rx="13.5"/>
+    <rect x="134" y="66" width="27" height="86" rx="13.5"/>
+    <rect x="171" y="79" width="27" height="73" rx="13.5"/>
+    <rect x="208" y="94" width="27" height="58" rx="13.5"/>
+  </g>
+  <g fill="none" stroke="#e0f0fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M66 164v22c0 11 5 16 15 16s15-5 15-16v-22"/>
+    <path d="M114 202v-38l30 38v-38"/>
+    <path d="m158 202 16-38 16 38m-26-11h20"/>
+    <path d="M230 165h-26v36h26m-26-18h23"/>
+  </g>
+</svg>
