@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import ThreeStage from '../three/ThreeStage.jsx'
 
@@ -20,6 +20,11 @@ const scenes = {
 export default function Hero() {
   const [scene, setScene] = useState('camera')
   const [replay, setReplay] = useState(0)
+  const [backgroundError, setBackgroundError] = useState(false)
+  const [heroVisible, setHeroVisible] = useState(true)
+  const heroSection = useRef(null)
+  const backgroundVideo = useRef(null)
+  const backgroundMirror = useRef(null)
   const reducedMotion = useReducedMotion()
 
   useEffect(() => {
@@ -28,9 +33,46 @@ export default function Hero() {
     return () => window.clearTimeout(timer)
   }, [reducedMotion])
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => setHeroVisible(entry.isIntersecting))
+    if (heroSection.current) observer.observe(heroSection.current)
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    const videos = [backgroundVideo.current, backgroundMirror.current]
+    if (reducedMotion || !heroVisible) {
+      videos.forEach((video) => video?.pause())
+    } else {
+      videos.forEach((video) => { if (video) video.play().catch(() => {}) })
+    }
+  }, [reducedMotion, backgroundError, heroVisible])
+
+  const syncBackground = () => {
+    const master = backgroundVideo.current
+    const mirror = backgroundMirror.current
+    if (master && mirror?.readyState >= 1 && Math.abs(master.currentTime - mirror.currentTime) > 0.12) {
+      mirror.currentTime = master.currentTime
+    }
+  }
+
   const current = scenes[scene]
   return (
-    <section id="inicio" className="hero">
+    <section id="inicio" className="hero" ref={heroSection}>
+      <div className={`hero__motion-bg ${backgroundError ? 'hero__motion-bg--fallback' : ''}`} aria-hidden="true">
+        <div className="hero__motion-side hero__motion-side--left" />
+        <div className="hero__motion-side hero__motion-side--right" />
+        {!backgroundError && (
+          <>
+            <video ref={backgroundMirror} className="hero__motion-video hero__motion-video--left" autoPlay={!reducedMotion} muted loop playsInline preload="auto" onError={() => setBackgroundError(true)}>
+              <source src="/video/hero-cyber.mp4" type="video/mp4" />
+            </video>
+            <video ref={backgroundVideo} className="hero__motion-video hero__motion-video--right" autoPlay={!reducedMotion} muted loop playsInline preload="auto" onTimeUpdate={syncBackground} onError={() => setBackgroundError(true)}>
+              <source src="/video/hero-cyber.mp4" type="video/mp4" />
+            </video>
+          </>
+        )}
+      </div>
       <div className="hero__ambient hero__ambient--one" />
       <div className="hero__ambient hero__ambient--two" />
       <div className="container hero__inner">
