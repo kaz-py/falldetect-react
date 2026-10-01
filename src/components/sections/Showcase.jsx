@@ -1,5 +1,6 @@
 import { showcaseStates } from '../../data/siteContent.js'
 import SectionHeading from '../ui/SectionHeading.jsx'
+import Reveal from '../ui/Reveal.jsx'
 
 function Preview({ variant }) {
   return (
@@ -21,7 +22,7 @@ export default function Showcase() {
           title="De la caída al aviso."
           description="Mira una simulación de 14 segundos: una caída en casa, su detección y la alerta que recibe su hija."
         />
-        <figure className="showcase__film">
+        <Reveal as="figure" className="showcase__film">
           <div className="showcase__film-top">
             <span>Demostración animada</span>
             <span>00:14</span>
@@ -38,14 +39,14 @@ export default function Showcase() {
             Tu navegador no puede reproducir este video. <a href="/video/falldetect.mp4">Abrir la demostración</a>.
           </video>
           <figcaption>Secuencia conceptual; no es una grabación del sistema en funcionamiento.</figcaption>
-        </figure>
+        </Reveal>
         <h3 className="showcase__states-title">El flujo en tres momentos</h3>
         <div className="showcase__grid">
           {showcaseStates.map((item) => (
-            <article className="showcase-card" key={item.code}>
+            <Reveal as="article" className="showcase-card" key={item.code} delay={showcaseStates.indexOf(item) * 0.1}>
               <Preview variant={item.variant} />
               <div className="showcase-card__text"><span>{item.code} / {item.status}</span><h3>{item.title}</h3><p>{item.description}</p></div>
-            </article>
+            </Reveal>
           ))}
         </div>
         <p className="showcase__note">Las imágenes también son ilustrativas. Las capturas reales del programa pueden incorporarse aquí cuando estén disponibles.</p>

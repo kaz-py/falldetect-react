@@ -3,6 +3,7 @@ import Footer from './components/layout/Footer.jsx'
 import Hero from './components/sections/Hero.jsx'
 import Challenge from './components/sections/Challenge.jsx'
 import Process from './components/sections/Process.jsx'
+import Capabilities from './components/sections/Capabilities.jsx'
 import Signal from './components/sections/Signal.jsx'
 import Principles from './components/sections/Principles.jsx'
 import Showcase from './components/sections/Showcase.jsx'
@@ -17,6 +18,7 @@ export default function App() {
         <Hero />
         <Challenge />
         <Process />
+        <Capabilities />
         <Signal />
         <Principles />
         <Showcase />

@@ -1,5 +1,6 @@
 import { processSteps } from '../../data/siteContent.js'
 import SectionHeading from '../ui/SectionHeading.jsx'
+import Reveal from '../ui/Reveal.jsx'
 
 export default function Process() {
   return (
@@ -12,19 +13,19 @@ export default function Process() {
         />
         <div className="process__grid">
           {processSteps.map((step) => (
-            <article className="process-card" key={step.number}>
+            <Reveal as="article" className="process-card" key={step.number} delay={Number(step.number) * 0.09}>
               <span className="process-card__number">{step.number}</span>
               <span className="process-card__line" />
               <h3>{step.title}</h3>
               <p>{step.description}</p>
               <span className="process-card__detail">{step.detail}</span>
-            </article>
+            </Reveal>
           ))}
         </div>
-        <div className="process__detail">
+        <Reveal className="process__detail">
           <div><span className="process__detail-indicator" /> Núcleo técnico</div>
           <p>OpenCV captura el video cuadro por cuadro. Ultralytics YOLO estima los puntos clave del cuerpo. FallDetect evalúa la orientación y la velocidad del movimiento; una pérdida brusca de verticalidad seguida de inmovilidad se interpreta como un posible evento de caída y da paso a la alerta por Telegram.</p>
-        </div>
+        </Reveal>
       </div>
     </section>
   )

@@ -1,5 +1,6 @@
 import { principles } from '../../data/siteContent.js'
 import SectionHeading from '../ui/SectionHeading.jsx'
+import Reveal from '../ui/Reveal.jsx'
 
 export default function Principles() {
   return (
@@ -12,10 +13,10 @@ export default function Principles() {
         />
         <div className="principles__grid">
           {principles.map((item, index) => (
-            <article className="principle" key={item.title}>
+            <Reveal as="article" className="principle" key={item.title} delay={index * 0.08}>
               <span className="principle__index">{String(index + 1).padStart(2, '0')}</span>
               <div><h3>{item.title}</h3><p>{item.description}</p></div>
-            </article>
+            </Reveal>
           ))}
         </div>
       </div>
